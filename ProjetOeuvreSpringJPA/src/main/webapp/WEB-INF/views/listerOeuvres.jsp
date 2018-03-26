@@ -17,6 +17,7 @@
 <div class="container">
     <a class="btn btn-secondary" href="index.htm" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Retour accueil</a>
     <h2>Tableau des oeuvres</h2>
+
     <table class="table table-striped">
         <thead>
         <tr>
@@ -35,7 +36,7 @@
                 <td>${item.idOeuvrevente}</td>
                 <td>${item.titreOeuvrevente}</td>
                 <td>${item.prixOeuvrevente}</td>
-                <%--<td>${item.proprietaire.nomProprietaire} ${item.proprietaire.prenomProprietaire}</td>--%>
+                <td>${proprietaires.get(item.idProprietaire).nomProprietaire} ${proprietaires.get(item.idProprietaire).prenomProprietaire}</td>
                 <td>
                     <c:choose>
                         <c:when test="${fn:contains(oeuvresReservees, idOeuvre)}">

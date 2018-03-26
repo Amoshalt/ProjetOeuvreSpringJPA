@@ -1,14 +1,17 @@
 package com.epul.oeuvres.controle;
 
 import com.epul.oeuvres.dao.OeuvreventeService;
+import com.epul.oeuvres.dao.ProprietaireService;
 import com.epul.oeuvres.meserreurs.MonException;
 import com.epul.oeuvres.metier.OeuvreventeEntity;
+import com.epul.oeuvres.metier.ProprietaireEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -23,11 +26,12 @@ public class OeuvreventeControleur {
         try {
             // HttpSession session = request.getSession();
             OeuvreventeService unService = new OeuvreventeService();
+            ProprietaireService proprietaireService = new ProprietaireService();
             List<OeuvreventeEntity> oeuvreventeEntityList = unService.consulterListeOeuvreventes();
-            for (OeuvreventeEntity oeuvreventeEntity: oeuvreventeEntityList) {
+            HashMap<Integer,ProprietaireEntity> proprietaireEntityList = proprietaireService.consulterListeProprietaires();
 
-            }
             request.setAttribute("mesOeuvresventes", oeuvreventeEntityList);
+            request.setAttribute("proprietaires", proprietaireEntityList);
             destinationPage = "listerOeuvres";
         } catch (MonException e) {
             request.setAttribute("MesErreurs", e.getMessage());
