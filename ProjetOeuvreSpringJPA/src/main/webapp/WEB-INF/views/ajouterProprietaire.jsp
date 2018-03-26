@@ -10,7 +10,7 @@
 
 <body>
 <div class="jumbotron text-center">
-    <h1>Ajout d'un Propriétaire</h1>
+    <h1>Ajout d'un propriétaire</h1>
 </div>
 
 <div class="container">
