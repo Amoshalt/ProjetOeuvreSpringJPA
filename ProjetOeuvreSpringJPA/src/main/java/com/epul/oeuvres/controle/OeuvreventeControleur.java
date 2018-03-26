@@ -74,4 +74,25 @@ public class OeuvreventeControleur {
 
         return new ModelAndView(destinationPage);
     }
+
+    @RequestMapping(value = "modifierOeuvre.htm")
+    public ModelAndView modifierOeuvrevente(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        OeuvreventeService oeuvreventeService = new OeuvreventeService();
+        String destinationPage = "";
+        try {
+            destinationPage = "modifierOeuvre";
+
+            OeuvreventeEntity oeuvreventeEntity = oeuvreventeService.getOeuvreEntityById((int)request.getAttribute("idOeuvre"));
+            request.setAttribute("idOeuvrevente", oeuvreventeEntity.getIdOeuvrevente());
+            request.setAttribute("titreOeuvrevente", oeuvreventeEntity.getTitreOeuvrevente());
+            request.setAttribute("prixOeuvrevente", oeuvreventeEntity.getPrixOeuvrevente());
+            request.setAttribute("idProprietaire", oeuvreventeEntity.getIdProprietaire());
+
+        } catch (Exception e) {
+            request.setAttribute("MesErreurs", e.getMessage());
+            destinationPage = "Erreur";
+        }
+
+        return new ModelAndView(destinationPage);
+    }
 }

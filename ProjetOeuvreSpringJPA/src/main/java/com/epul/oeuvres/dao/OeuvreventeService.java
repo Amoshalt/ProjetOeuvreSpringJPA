@@ -49,4 +49,22 @@ public class OeuvreventeService extends Service{
         }
         return mesOeuvreventes;
     }
+
+    public OeuvreventeEntity getOeuvreEntityById(int idOeuvre) throws MonException{
+        OeuvreventeEntity oeuvreventeEntity= null;
+        try
+        {
+            EntityTransaction transac = startTransaction();
+            transac.begin();
+            oeuvreventeEntity = (OeuvreventeEntity)entitymanager.createQuery("SELECT o FROM OeuvreventeEntity o WHERE o.idOeuvrevente LIKE :id").setParameter("id", idOeuvre).getResultList();
+            entitymanager.close();
+        }
+        catch (RuntimeException e)
+        {
+            new MonException("Erreur de lecture", e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return oeuvreventeEntity;
+    }
 }

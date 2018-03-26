@@ -29,8 +29,8 @@
             <input type="number" class="form-control" id="prixOeuvrevente" placeholder="${prixOeuvrevente}" name="prix">
         </div>
         <div class="form-group">
-            <label for="nomProprietaire">Proprietaire :</label>
-            <input type="text" class="form-control" id="nomProprietaire" placeholder="${proprietaire.nomProprietaire} ${proprietaire.prenomProprietaire} " name="prix">
+            <label for="idProprietaire">Proprietaire :</label>
+            <input type="text" class="form-control" id="idProprietaire" placeholder="${proprietaire.nomProprietaire} ${proprietaire.prenomProprietaire} " name="prix">
         </div>
 
         <button type="submit"class="btn btn-default">Ajouter</button>
