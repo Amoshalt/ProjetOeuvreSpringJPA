@@ -48,7 +48,7 @@
                             <a href="modifierOeuvre.htm?idOeuvre=${idOeuvre}">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
-                            <a href="#">
+                            <a href="reserverOeuvre.htm?idOeuvre=${idOeuvre}">
                                 <span class="glyphicon glyphicon-check"></span>
                             </a>
                         </c:otherwise>
