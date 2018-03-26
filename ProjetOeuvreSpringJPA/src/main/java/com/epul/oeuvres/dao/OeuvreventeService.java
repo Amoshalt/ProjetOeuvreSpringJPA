@@ -67,4 +67,18 @@ public class OeuvreventeService extends Service{
         }
         return oeuvreventeEntity;
     }
+
+    public void insertOeuvreVente(OeuvreventeEntity oeuvrevente) {
+        try {
+            EntityTransaction transac = startTransaction();
+            transac.begin();
+            entitymanager.persist(oeuvrevente);
+            transac.commit();
+            entitymanager.close();
+        } catch (RuntimeException e) {
+            new MonException("Erreur de lecture", e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -95,4 +95,25 @@ public class OeuvreventeControleur {
 
         return new ModelAndView(destinationPage);
     }
+
+    @RequestMapping(value = "insererOeuvre.htm")
+    public ModelAndView insererOeuvre(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        String destinationPage;
+        try {
+            OeuvreventeService oeuvreVenteService = new OeuvreventeService();
+            ProprietaireService proprietaireService = new ProprietaireService();
+            OeuvreventeEntity oeuvrevente = new OeuvreventeEntity();
+            oeuvrevente.setTitreOeuvrevente(request.getParameter("titre"));
+            oeuvrevente.setEtatOeuvrevente("L");
+            oeuvrevente.setPrixOeuvrevente(Integer.valueOf(request.getParameter("prix")));
+            //oeuvrevente.setProprietaire(proprietaireService.rechercherProprietaire(Integer.valueOf(request.getParameter("idProprietaire"))));
+            oeuvreVenteService.insertOeuvreVente(oeuvrevente);
+            destinationPage = "home";
+        } catch (Exception e) {
+            request.setAttribute("MesErreurs", e.getMessage());
+            destinationPage = "Erreur";
+        }
+        return new ModelAndView(destinationPage);
+    }
 }
