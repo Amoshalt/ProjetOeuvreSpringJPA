@@ -28,14 +28,14 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${mesOeuvres}" var="item">
+        <c:forEach items="${mesOeuvresventes}" var="item">
             <c:set var="idOeuvre">${item.idOeuvrevente}</c:set>
             <c:set var="oeuvresReservees">${oeuvresReservees}</c:set>
             <tr>
                 <td>${item.idOeuvrevente}</td>
                 <td>${item.titreOeuvrevente}</td>
                 <td>${item.prixOeuvrevente}</td>
-                <td>${item.proprietaire.nomProprietaire} ${item.proprietaire.prenomProprietaire}</td>
+                <%--<td>${item.proprietaire.nomProprietaire} ${item.proprietaire.prenomProprietaire}</td>--%>
                 <td>
                     <c:choose>
                         <c:when test="${fn:contains(oeuvresReservees, idOeuvre)}">

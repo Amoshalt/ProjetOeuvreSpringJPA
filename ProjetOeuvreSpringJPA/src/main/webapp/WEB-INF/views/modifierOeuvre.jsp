@@ -14,23 +14,23 @@
 </div>
 
 <div class="container">
-    <FORM  name='identification' method="post" action="insererProprietaire.htm" onsubmit="return teste()">
+    <FORM  name='identification' method="post" action="insererOeuvre.htm" onsubmit="return teste()">
         <div class="form-group">
-            <label for="numero">Numero :</label>
+            <label for="idOeuvrevente">Numero :</label>
             OeuvreventeId :${idOeuvrevente}fin
-            <input type="number" class="form-control" id="numero" placeholder="${idOeuvrevente}" name="numero">
+            <input type="number" class="form-control" id="idOeuvrevente" placeholder="${idOeuvrevente}" name="numero">
         </div>
         <div class="form-group">
-            <label for="titreOeuvre">Titre:</label>
-            <input type="text" class="form-control" id="titreOeuvre" placeholder="${titreOeuvrevente}" name="titreOeuvre">
+            <label for="titreOeuvrevente">Titre:</label>
+            <input type="text" class="form-control" id="titreOeuvrevente" placeholder="${titreOeuvrevente}" name="titreOeuvre">
         </div>
         <div class="form-group">
-            <label for="prix">Prix :</label>
-            <input type="text" class="form-control" id="prix" placeholder="${prixOeuvrevente}" name="prix">
+            <label for="prixOeuvrevente">Prix :</label>
+            <input type="number" class="form-control" id="prixOeuvrevente" placeholder="${prixOeuvrevente}" name="prix">
         </div>
         <div class="form-group">
-            <label for="proprietaire">Proprietaire :</label>
-            <input type="text" class="form-control" id="proprietaire" placeholder="${proprietaire.nomProprietaire} ${proprietaire.prenomProprietaire} " name="prix">
+            <label for="nomProprietaire">Proprietaire :</label>
+            <input type="text" class="form-control" id="nomProprietaire" placeholder="${proprietaire.nomProprietaire} ${proprietaire.prenomProprietaire} " name="prix">
         </div>
 
         <button type="submit"class="btn btn-default">Ajouter</button>
