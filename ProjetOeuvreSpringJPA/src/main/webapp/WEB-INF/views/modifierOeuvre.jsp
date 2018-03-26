@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%
+    session.setAttribute("title", "Modifier oeuvres");
+%>
 <%@include file="./header.jsp" %>
 <SCRIPT language="Javascript" type="text/javascript"></SCRIPT>
 <script type="text/javascript" src="js/foncControle.js"></script>

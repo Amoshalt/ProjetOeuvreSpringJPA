@@ -13,7 +13,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Ajouter un  adhérent</title>
+    <title>${title}</title>
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
