@@ -17,7 +17,7 @@
 <div class="container">
     <FORM  name='identification' method="post" action="insererOeuvre.htm" onsubmit="return teste()">
         <div class="form-group">
-            Id de l'oeuvre : ${idOeuvrevente}
+            <h2>Id de l'oeuvre : ${idOeuvrevente}</h2>
         </div>
         <div class="form-group">
             <label for="titreOeuvrevente">Titre:</label>
@@ -43,7 +43,7 @@
             </select>
         </div>
 
-        <button type="submit"class="btn btn-default">Ajouter</button>
+        <button type="submit"class="btn btn-default">Update</button>
     </FORM>
 </DIV>
 </body>

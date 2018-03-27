@@ -82,15 +82,17 @@ public class OeuvreventeControleur {
         try {
             destinationPage = "modifierOeuvre";
 
-            OeuvreventeEntity oeuvreventeEntity = oeuvreventeService.getOeuvreEntityById(Integer.parseInt(request.getParameter("idOeuvre")));
-            HashMap<Integer,ProprietaireEntity> proprietaireEntityHashMap = proprietaireService.consulterListeProprietaires();
+            if (request.getParameter("idOeuvre") != null) {
+                OeuvreventeEntity oeuvreventeEntity = oeuvreventeService.getOeuvreEntityById(Integer.parseInt(request.getParameter("idOeuvre")));
+                HashMap<Integer,ProprietaireEntity> proprietaireEntityHashMap = proprietaireService.consulterListeProprietaires();
 
-            request.setAttribute("idOeuvrevente", oeuvreventeEntity.getIdOeuvrevente());
-            request.setAttribute("titreOeuvrevente", oeuvreventeEntity.getTitreOeuvrevente());
-            request.setAttribute("prixOeuvrevente", oeuvreventeEntity.getPrixOeuvrevente());
-            request.setAttribute("idProprietaire", oeuvreventeEntity.getIdProprietaire());
-            request.setAttribute("proprietaires", proprietaireEntityHashMap);
-            request.setAttribute("idProprietaire", oeuvreventeEntity.getIdProprietaire());
+                request.setAttribute("idOeuvrevente", oeuvreventeEntity.getIdOeuvrevente());
+                request.setAttribute("titreOeuvrevente", oeuvreventeEntity.getTitreOeuvrevente());
+                request.setAttribute("prixOeuvrevente", oeuvreventeEntity.getPrixOeuvrevente());
+                request.setAttribute("idProprietaire", oeuvreventeEntity.getIdProprietaire());
+                request.setAttribute("proprietaires", proprietaireEntityHashMap);
+                request.setAttribute("idProprietaire", oeuvreventeEntity.getIdProprietaire());
+            }
 
         } catch (MonException e) {
             request.setAttribute("MesErreurs", e.getMessage());
