@@ -1,12 +1,15 @@
 package com.epul.oeuvres.utilitaires;
 
+import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 
 public class FonctionsUtiles {
 
 	// /
-	// / Conversion d'une date en chaîne
+	// / Conversion d'une date en chaï¿½ne
 	// /
 	public static String DateToString(Date dt, String modeleEntree)  {
 	
@@ -25,11 +28,11 @@ public class FonctionsUtiles {
 	}
 
 	public static String conversionDateenChaine(Date unedate, String modele)
-	// le modèlet est une combinaison de MM dd yyyy avec / ou –
+	// le modï¿½let est une combinaison de MM dd yyyy avec / ou ï¿½
 	// exemple dd/MM/yyyy
 			throws Exception {
 		String datesortie = "";
-		// on définit un format de sortie
+		// on dï¿½finit un format de sortie
 		SimpleDateFormat defFormat = new SimpleDateFormat(modele);
 		datesortie = defFormat.format(unedate);
 		return datesortie;
@@ -39,9 +42,9 @@ public class FonctionsUtiles {
 	public static Date conversionChaineenDate(String unedate, String unformat)
 			throws Exception {
 		Date datesortie;
-		// on définit un format de sortie
+		// on dï¿½finit un format de sortie
 		SimpleDateFormat defFormat = new SimpleDateFormat(unformat);
-		datesortie = defFormat.parse(unedate);
+		datesortie = new Date( defFormat.parse(unedate).getTime());
 		return datesortie;
 	}
 	

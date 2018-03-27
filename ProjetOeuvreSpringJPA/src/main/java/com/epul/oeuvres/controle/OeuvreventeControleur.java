@@ -123,7 +123,7 @@ public class OeuvreventeControleur {
                 oeuvrevente.setIdOeuvrevente(Integer.parseInt(request.getParameter("idOeuvrevente")));
                 oeuvreVenteService.updateOeuvreVente(oeuvrevente);
             } else {
-                oeuvreVenteService.insertOeuvreVente(oeuvrevente);
+                oeuvreVenteService.insertOeuvrevente(oeuvrevente);
             }
 
             destinationPage = "home";

@@ -20,11 +20,9 @@ public class OeuvreventeService extends Service{
             transac.commit();
             entitymanager.close();
         } catch (Exception e) {
-            throw new MonException("Erreur de lecture", e.getMessage());
+            throw new MonException("Erreur de lecture durant l'insertion d'une vente", e.getMessage());
         }
     }
-
-
 
     /* Lister les Oeuvreventes
      * */
@@ -34,10 +32,13 @@ public class OeuvreventeService extends Service{
         {
             EntityTransaction transac = startTransaction();
             transac.begin();
-            mesOeuvreventes = (List<OeuvreventeEntity>)entitymanager.createQuery("SELECT o FROM OeuvreventeEntity o ORDER BY o.titreOeuvrevente").getResultList();
+            mesOeuvreventes = (List<OeuvreventeEntity>)entitymanager.createQuery(
+                    "SELECT o FROM OeuvreventeEntity o ORDER BY o.titreOeuvrevente"
+            )
+                    .getResultList();
             entitymanager.close();
         } catch (Exception e) {
-            throw new MonException("Erreur de lecture", e.getMessage() + " durant consultation liste oeuvres");
+            throw new MonException("Erreur de lecture durant consultation liste oeuvres", e.getMessage());
         }
         return mesOeuvreventes;
     }
@@ -48,24 +49,16 @@ public class OeuvreventeService extends Service{
         {
             EntityTransaction transac = startTransaction();
             transac.begin();
-            oeuvreventeEntity = (OeuvreventeEntity)entitymanager.createQuery("SELECT o FROM OeuvreventeEntity o WHERE o.idOeuvrevente = :id").setParameter("id", idOeuvre).getSingleResult();
+            oeuvreventeEntity = (OeuvreventeEntity)entitymanager.createQuery(
+                    "SELECT o FROM OeuvreventeEntity o WHERE o.idOeuvrevente = :id"
+            )
+                    .setParameter("id", idOeuvre)
+                    .getSingleResult();
             entitymanager.close();
         } catch (Exception e) {
-            throw new MonException("Erreur de lecture", e.getMessage()  + " durant récupération de l'oeuvre");
+            throw new MonException("Erreur de lecture durant récupération de l'oeuvre", e.getMessage());
         }
         return oeuvreventeEntity;
-    }
-
-    public void insertOeuvreVente(OeuvreventeEntity oeuvrevente) throws MonException {
-        try {
-            EntityTransaction transac = startTransaction();
-            transac.begin();
-            entitymanager.persist(oeuvrevente);
-            transac.commit();
-            entitymanager.close();
-        } catch (Exception e) {
-            throw new MonException("Erreur de lecture", e.getMessage() + " durant insertion de l'oeuvre");
-        }
     }
 
     public void updateOeuvreVente(OeuvreventeEntity oeuvrevente) throws MonException {
@@ -76,7 +69,7 @@ public class OeuvreventeService extends Service{
             transac.commit();
             entitymanager.close();
         } catch (Exception e) {
-            throw new MonException("Erreur de lecture", e.getMessage() + " durant mise à jour de l'oeuvre");
+            throw new MonException("Erreur de lecture durant mise à jour de l'oeuvre", e.getMessage());
         }
     }
 }

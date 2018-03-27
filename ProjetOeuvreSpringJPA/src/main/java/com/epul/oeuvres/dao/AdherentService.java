@@ -48,21 +48,19 @@ public class AdherentService extends Service{
 
     /* Consultation d'une adherent par son numéro
      */
-    public AdherentEntity adherentById(int numero) throws MonException {
-        List<AdherentEntity> adherents = null;
-        AdherentEntity adherent = new AdherentEntity();
+    public AdherentEntity adherentById(int idAdherent) throws MonException {
+        AdherentEntity adherent;
         try {
             EntityTransaction transac = startTransaction();
             transac.begin();
 
-            adherents = (List<AdherentEntity>)entitymanager.createQuery("SELECT a FROM AdherentEntity a WHERE a.idAdherent="+numero).getResultList();
-            adherent = adherents.get(0);
+            adherent = (AdherentEntity)entitymanager.createQuery(
+                    "SELECT a FROM AdherentEntity a WHERE a.idAdherent=:idAdherent")
+                    .setParameter("idAdherent",idAdherent)
+                    .getSingleResult();
             entitymanager.close();
-        }catch (RuntimeException e)
-        {
-            new MonException("Erreur de lecture", e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new MonException("Erreur de lecture", e.getMessage());
         }
         return adherent;
     }
