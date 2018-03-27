@@ -21,7 +21,7 @@ public class ProprietaireService extends Service{
             transac.commit();
             entitymanager.close();
         } catch (Exception e) {
-            throw new MonException("Erreur de lecture", e.getMessage());
+            throw new MonException("Erreur de lecture", e.getMessage() + " durant insertion du propriétaire");
         }
     }
 
@@ -40,7 +40,7 @@ public class ProprietaireService extends Service{
                 proprietaireEntityHashMap.put(proprietaireEntity.getIdProprietaire(),proprietaireEntity);
             }
         } catch (Exception e) {
-            throw new MonException("Erreur de lecture", e.getMessage());
+            throw new MonException("Erreur de lecture", e.getMessage() + " durant consultation du propriétaire");
         }
         return proprietaireEntityHashMap;
     }

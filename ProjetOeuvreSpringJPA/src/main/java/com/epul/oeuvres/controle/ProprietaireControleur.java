@@ -45,7 +45,7 @@ public class ProprietaireControleur {
         try {
             destinationPage = "ajouterProprietaire";
         } catch (Exception e) {
-            request.setAttribute("MesErreurs", e.getMessage());
+            request.setAttribute("MesErreurs", e.getMessage()  + " durant l'ajout du propriétaire");
             destinationPage = "Erreur";
         }
 

@@ -81,16 +81,16 @@ public class OeuvreventeControleur {
         String destinationPage = "";
         try {
             destinationPage = "modifierOeuvre";
+            HashMap<Integer,ProprietaireEntity> proprietaireEntityHashMap = proprietaireService.consulterListeProprietaires();
+            request.setAttribute("proprietaires", proprietaireEntityHashMap);
 
-            if (request.getParameter("idOeuvre") != null) {
-                OeuvreventeEntity oeuvreventeEntity = oeuvreventeService.getOeuvreEntityById(Integer.parseInt(request.getParameter("idOeuvre")));
-                HashMap<Integer,ProprietaireEntity> proprietaireEntityHashMap = proprietaireService.consulterListeProprietaires();
+            if (request.getParameter("idOeuvrevente") != null) {
+                OeuvreventeEntity oeuvreventeEntity = oeuvreventeService.getOeuvreEntityById(Integer.parseInt(request.getParameter("idOeuvrevente")));
 
                 request.setAttribute("idOeuvrevente", oeuvreventeEntity.getIdOeuvrevente());
                 request.setAttribute("titreOeuvrevente", oeuvreventeEntity.getTitreOeuvrevente());
                 request.setAttribute("prixOeuvrevente", oeuvreventeEntity.getPrixOeuvrevente());
                 request.setAttribute("idProprietaire", oeuvreventeEntity.getIdProprietaire());
-                request.setAttribute("proprietaires", proprietaireEntityHashMap);
                 request.setAttribute("idProprietaire", oeuvreventeEntity.getIdProprietaire());
             }
 
@@ -106,15 +106,26 @@ public class OeuvreventeControleur {
     public ModelAndView insererOeuvre(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         String destinationPage;
+        OeuvreventeService oeuvreVenteService = new OeuvreventeService();
+        OeuvreventeEntity oeuvrevente;
         try {
-            OeuvreventeService oeuvreVenteService = new OeuvreventeService();
-            ProprietaireService proprietaireService = new ProprietaireService();
-            OeuvreventeEntity oeuvrevente = new OeuvreventeEntity();
-            oeuvrevente.setTitreOeuvrevente(request.getParameter("titre"));
+            if (request.getParameter("idOeuvrevente") != null) {
+                oeuvrevente = oeuvreVenteService.getOeuvreEntityById(Integer.parseInt(request.getParameter("idOeuvrevente")));
+            } else {
+                oeuvrevente = new OeuvreventeEntity();
+            }
+            oeuvrevente.setTitreOeuvrevente(request.getParameter("titreOeuvrevente"));
             oeuvrevente.setEtatOeuvrevente("L");
-            oeuvrevente.setPrixOeuvrevente(Integer.valueOf(request.getParameter("prix")));
-            //oeuvrevente.setProprietaire(proprietaireService.rechercherProprietaire(Integer.valueOf(request.getParameter("idProprietaire"))));
-            oeuvreVenteService.insertOeuvreVente(oeuvrevente);
+            oeuvrevente.setPrixOeuvrevente(Double.parseDouble(request.getParameter("prixOeuvrevente")));
+            oeuvrevente.setIdProprietaire(Integer.parseInt(request.getParameter("idProprietaire")));
+
+            if (request.getParameter("idOeuvrevente") != null) {
+                oeuvrevente.setIdOeuvrevente(Integer.parseInt(request.getParameter("idOeuvrevente")));
+                oeuvreVenteService.updateOeuvreVente(oeuvrevente);
+            } else {
+                oeuvreVenteService.insertOeuvreVente(oeuvrevente);
+            }
+
             destinationPage = "home";
         } catch (MonException e) {
             request.setAttribute("MesErreurs", e.getMessage());
