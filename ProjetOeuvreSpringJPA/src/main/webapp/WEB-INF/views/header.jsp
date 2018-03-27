@@ -21,7 +21,7 @@
             </div>
             <p class="navbar-text">Gestion de l'exposition 2016</p>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.htm"> <span class="glyphicon glyphicon-home"></span> Accueil</a></li>
+                <li><a href="index.htm"> <span class="glyphicon glyphicon-home"></span> Accueil</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <span class="glyphicon glyphicon-user"></span>

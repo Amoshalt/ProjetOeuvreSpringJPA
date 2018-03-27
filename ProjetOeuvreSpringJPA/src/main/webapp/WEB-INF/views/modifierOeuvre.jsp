@@ -11,21 +11,49 @@
 
 <body>
 <div class="jumbotron text-center">
-    <h1>Modifier une oeuvre</h1>
+    <c:choose>
+        <c:when test="${ not empty idOeuvrevente}">
+            <h1>Modifier une oeuvre</h1>
+        </c:when>
+        <c:otherwise>
+            <h1>Ajouter une oeuvre</h1>
+        </c:otherwise>
+    </c:choose>
 </div>
 
 <div class="container">
     <FORM  name='identification' method="post" action="insererOeuvre.htm" onsubmit="return teste()">
-        <div class="form-group">
-            <h2>Id de l'oeuvre : ${idOeuvrevente}</h2>
-        </div>
+        <c:if test="${not empty idOeuvrevente}">
+            <div class="form-group">
+                <h2>Id de l'oeuvre : ${idOeuvrevente}</h2>
+                <input hidden id="idOeuvrevente" name="idOeuvrevente" value="${idOeuvrevente}">
+            </div>
+        </c:if>
         <div class="form-group">
             <label for="titreOeuvrevente">Titre:</label>
-            <input type="text" class="form-control" id="titreOeuvrevente" placeholder="${titreOeuvrevente}" name="titreOeuvre">
+            <input
+                    type="text"
+                    class="form-control"
+                    id="titreOeuvrevente"
+                    <c:if test="${not empty idOeuvrevente}">
+                            value="${titreOeuvrevente}"
+                    </c:if>
+                    placeholder="${titreOeuvrevente}"
+                    name="titreOeuvrevente"
+            >
         </div>
         <div class="form-group">
             <label for="prixOeuvrevente">Prix :</label>
-            <input type="number" class="form-control" id="prixOeuvrevente" placeholder="${prixOeuvrevente}" name="prix">
+            <input
+                    type="number"
+                    class="form-control"
+                    id="prixOeuvrevente"
+                    <c:if test="${not empty idOeuvrevente}">
+                        value="${prixOeuvrevente}"
+                    </c:if>
+                    placeholder="${prixOeuvrevente}"
+                    name="prixOeuvrevente"
+            >
         </div>
         <div class="form-group">
             <label for="idProprietaire" >Proprietaire :</label>
@@ -43,7 +71,16 @@
             </select>
         </div>
 
-        <button type="submit"class="btn btn-default">Update</button>
+        <button type="submit"class="btn btn-default" align="right">
+            <c:choose>
+                <c:when test="${not empty idOeuvrevente}">
+                    Modifier
+                </c:when>
+                <c:otherwise>
+                    Ajouter
+                </c:otherwise>
+            </c:choose>
+        </button>
     </FORM>
 </DIV>
 </body>

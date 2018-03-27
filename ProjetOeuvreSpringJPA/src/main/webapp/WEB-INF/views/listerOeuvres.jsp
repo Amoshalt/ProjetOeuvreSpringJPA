@@ -39,7 +39,7 @@
                 <td>${proprietaires.get(item.idProprietaire).nomProprietaire} ${proprietaires.get(item.idProprietaire).prenomProprietaire}</td>
                 <td>
                     <c:url var="urlModifierOeuvre" value="modifierOeuvre.htm">
-                        <c:param name="idOeuvre" value="${idOeuvre}"/>
+                        <c:param name="idOeuvrevente" value="${idOeuvre}"/>
                     </c:url>
                     <c:url var="urlReserverOeuvre" value="reserverOeuvre.htm">
                         <c:param name="idOeuvre" value="${idOeuvre}"/>
