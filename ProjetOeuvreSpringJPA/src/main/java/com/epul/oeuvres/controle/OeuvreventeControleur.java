@@ -53,11 +53,10 @@ public class OeuvreventeControleur {
             unOeuvrevente.setPrixOeuvrevente(Double.parseDouble(request.getParameter("prixOeuvrevente")));
             OeuvreventeService unService = new OeuvreventeService();
             unService.insertOeuvrevente(unOeuvrevente);
-        } catch (Exception e) {
+        } catch (MonException e) {
             request.setAttribute("MesErreurs", e.getMessage());
             destinationPage = "Erreur";
         }
-        destinationPage = "home";
         return new ModelAndView(destinationPage);
     }
 
@@ -78,17 +77,22 @@ public class OeuvreventeControleur {
     @RequestMapping(value = "modifierOeuvre.htm")
     public ModelAndView modifierOeuvrevente(HttpServletRequest request, HttpServletResponse response) throws Exception {
         OeuvreventeService oeuvreventeService = new OeuvreventeService();
+        ProprietaireService proprietaireService = new ProprietaireService();
         String destinationPage = "";
         try {
             destinationPage = "modifierOeuvre";
 
-            OeuvreventeEntity oeuvreventeEntity = oeuvreventeService.getOeuvreEntityById((int)request.getAttribute("idOeuvre"));
+            OeuvreventeEntity oeuvreventeEntity = oeuvreventeService.getOeuvreEntityById(Integer.parseInt(request.getParameter("idOeuvre")));
+            HashMap<Integer,ProprietaireEntity> proprietaireEntityHashMap = proprietaireService.consulterListeProprietaires();
+
             request.setAttribute("idOeuvrevente", oeuvreventeEntity.getIdOeuvrevente());
             request.setAttribute("titreOeuvrevente", oeuvreventeEntity.getTitreOeuvrevente());
             request.setAttribute("prixOeuvrevente", oeuvreventeEntity.getPrixOeuvrevente());
             request.setAttribute("idProprietaire", oeuvreventeEntity.getIdProprietaire());
+            request.setAttribute("proprietaires", proprietaireEntityHashMap);
+            request.setAttribute("idProprietaire", oeuvreventeEntity.getIdProprietaire());
 
-        } catch (Exception e) {
+        } catch (MonException e) {
             request.setAttribute("MesErreurs", e.getMessage());
             destinationPage = "Erreur";
         }
@@ -110,7 +114,7 @@ public class OeuvreventeControleur {
             //oeuvrevente.setProprietaire(proprietaireService.rechercherProprietaire(Integer.valueOf(request.getParameter("idProprietaire"))));
             oeuvreVenteService.insertOeuvreVente(oeuvrevente);
             destinationPage = "home";
-        } catch (Exception e) {
+        } catch (MonException e) {
             request.setAttribute("MesErreurs", e.getMessage());
             destinationPage = "Erreur";
         }

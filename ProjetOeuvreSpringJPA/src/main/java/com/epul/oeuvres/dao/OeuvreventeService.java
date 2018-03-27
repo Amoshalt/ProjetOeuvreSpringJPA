@@ -19,12 +19,8 @@ public class OeuvreventeService extends Service{
             entitymanager.persist(unOeuvrevente);
             transac.commit();
             entitymanager.close();
-        }
-        catch (RuntimeException e)
-        {
-            new MonException("Erreur de lecture", e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new MonException("Erreur de lecture", e.getMessage());
         }
     }
 
@@ -40,12 +36,8 @@ public class OeuvreventeService extends Service{
             transac.begin();
             mesOeuvreventes = (List<OeuvreventeEntity>)entitymanager.createQuery("SELECT o FROM OeuvreventeEntity o ORDER BY o.titreOeuvrevente").getResultList();
             entitymanager.close();
-        }
-        catch (RuntimeException e)
-        {
-            new MonException("Erreur de lecture", e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new MonException("Erreur de lecture", e.getMessage());
         }
         return mesOeuvreventes;
     }
@@ -56,29 +48,23 @@ public class OeuvreventeService extends Service{
         {
             EntityTransaction transac = startTransaction();
             transac.begin();
-            oeuvreventeEntity = (OeuvreventeEntity)entitymanager.createQuery("SELECT o FROM OeuvreventeEntity o WHERE o.idOeuvrevente LIKE :id").setParameter("id", idOeuvre).getResultList();
+            oeuvreventeEntity = (OeuvreventeEntity)entitymanager.createQuery("SELECT o FROM OeuvreventeEntity o WHERE o.idOeuvrevente = :id").setParameter("id", idOeuvre).getSingleResult();
             entitymanager.close();
-        }
-        catch (RuntimeException e)
-        {
-            new MonException("Erreur de lecture", e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new MonException("Erreur de lecture", e.getMessage());
         }
         return oeuvreventeEntity;
     }
 
-    public void insertOeuvreVente(OeuvreventeEntity oeuvrevente) {
+    public void insertOeuvreVente(OeuvreventeEntity oeuvrevente) throws MonException {
         try {
             EntityTransaction transac = startTransaction();
             transac.begin();
             entitymanager.persist(oeuvrevente);
             transac.commit();
             entitymanager.close();
-        } catch (RuntimeException e) {
-            new MonException("Erreur de lecture", e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new MonException("Erreur de lecture", e.getMessage());
         }
     }
 }

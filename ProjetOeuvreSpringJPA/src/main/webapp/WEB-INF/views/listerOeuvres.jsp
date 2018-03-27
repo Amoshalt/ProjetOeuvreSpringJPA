@@ -38,17 +38,23 @@
                 <td>${item.prixOeuvrevente}</td>
                 <td>${proprietaires.get(item.idProprietaire).nomProprietaire} ${proprietaires.get(item.idProprietaire).prenomProprietaire}</td>
                 <td>
+                    <c:url var="urlModifierOeuvre" value="modifierOeuvre.htm">
+                        <c:param name="idOeuvre" value="${idOeuvre}"/>
+                    </c:url>
+                    <c:url var="urlReserverOeuvre" value="reserverOeuvre.htm">
+                        <c:param name="idOeuvre" value="${idOeuvre}"/>
+                    </c:url>
                     <c:choose>
                         <c:when test="${fn:contains(oeuvresReservees, idOeuvre)}">
-                            <a href="modifierOeuvre.htm">
+                            <a href="${urlModifierOeuvre}">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
                         </c:when>
                         <c:otherwise>
-                            <a href="modifierOeuvre.htm?idOeuvre=${idOeuvre}">
+                            <a href="${urlModifierOeuvre}">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
-                            <a href="reserverOeuvre.htm?idOeuvre=${idOeuvre}">
+                            <a href="${urlReserverOeuvre}">
                                 <span class="glyphicon glyphicon-check"></span>
                             </a>
                         </c:otherwise>
