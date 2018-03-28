@@ -22,12 +22,8 @@
 
 <div class="container">
     <FORM  name='identification' method="post" action="insererOeuvre.htm" onsubmit="return teste()">
-        <c:if test="${not empty idOeuvrevente}">
-            <div class="form-group">
-                <h2>Id de l'oeuvre : ${idOeuvrevente}</h2>
-                <input hidden id="idOeuvrevente" name="idOeuvrevente" value="${idOeuvrevente}">
-            </div>
-        </c:if>
+        <input hidden id="idOeuvrevente" name="idOeuvrevente" value="${idOeuvrevente}">
+
         <div class="form-group">
             <label for="titreOeuvrevente">Titre:</label>
             <input
