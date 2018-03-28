@@ -16,11 +16,11 @@
     <FORM  name='identification' method="post" action="insererProprietaire.htm" onsubmit="return teste()">
         <div class="form-group">
             <label for="nomProprietaire">Nom du propriétaire :</label>
-            <input type="text" class="form-control" id="nomProprietaire" placeholder="" name="nomProprietaire">
+            <input type="text" class="form-control" id="nomProprietaire" placeholder="" name="nomProprietaire" required>
         </div>
         <div class="form-group">
             <label for="prenomProprietaire">Prenom du propriétaire:</label>
-            <input type="text" class="form-control" id="prenomProprietaire" placeholder="" name="prenomProprietaire">
+            <input type="text" class="form-control" id="prenomProprietaire" placeholder="" name="prenomProprietaire" required>
         </div>
 
         <button type="submit"class="btn btn-default">Ajouter</button>

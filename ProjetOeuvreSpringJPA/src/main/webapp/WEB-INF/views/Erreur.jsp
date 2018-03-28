@@ -21,7 +21,7 @@ function Chargement()
     <div class="container">
     <input type ="hidden" name="uneErreur"  value="${MesErreurs}"  id ="id_erreur" >
         <div class="jumbotron text-center">
-            <h1>${MesErreurs}
+            <h1>
                 Une erreur est survenue
             </h1>
         </div>

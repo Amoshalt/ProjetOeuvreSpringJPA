@@ -35,11 +35,12 @@
                     </c:if>
                     placeholder="${titreOeuvrevente}"
                     name="titreOeuvrevente"
+                    required
             >
         </div>
         <div class="form-group">
             <label for="prixOeuvrevente">Prix :</label>
-            <input
+            <input required
                     type="number"
                     class="form-control"
                     id="prixOeuvrevente"
@@ -52,11 +53,11 @@
         </div>
         <div class="form-group">
             <label for="idProprietaire" >Proprietaire :</label>
-            <select class="form-control" name="idProprietaire" id="idProprietaire">
+            <select class="form-control" name="idProprietaire" id="idProprietaire" required>
                 <c:forEach items="${proprietaires}" var="proprietaire">
                     <option
                         value="${proprietaire.key}"
-                        <c:if test="${proprietaire.key} = ${idProprietaire} ">
+                        <c:if test="${proprietaire.key eq idProprietaire}">
                             selected
                         </c:if>
                     >

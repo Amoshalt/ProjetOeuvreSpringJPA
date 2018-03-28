@@ -15,15 +15,15 @@
         <FORM  name='identification' method="post" action="insererAdherent.htm" onsubmit="return teste()">
             <div class="form-group">
                 <label for="nomAdherent">Nom de l'adherent :</label>
-                <input type="text" class="form-control" id="nomAdherent" placeholder="" name="nomAdherent">
+                <input type="text" class="form-control" id="nomAdherent" placeholder="" name="nomAdherent" required>
             </div>
             <div class="form-group">
                 <label for="prenomAdherent">Prenom de l'adherent :</label>
-                <input type="text" class="form-control" id="prenomAdherent" placeholder="" name="prenomAdherent">
+                <input type="text" class="form-control" id="prenomAdherent" placeholder="" name="prenomAdherent" required>
             </div>
             <div class="form-group">
                 <label for="villeAdherent">Ville de l'adherent :</label>
-                <input type="text" class="form-control" id="villeAdherent" placeholder="" name="villeAdherent">
+                <input type="text" class="form-control" id="villeAdherent" placeholder="" name="villeAdherent" required>
             </div>
 
             <button type="submit"class="btn btn-default">Ajouter</button>

@@ -34,7 +34,7 @@ public class OeuvreventeControleur {
             request.setAttribute("proprietaires", proprietaireEntityList);
             request.setAttribute("oeuvresReservees", oeuvreService.getBookedOeuvres());
             destinationPage = "listerOeuvres";
-        } catch (MonException e) {
+        } catch (Exception e) {
             request.setAttribute("MesErreurs", e.getMessage());
             destinationPage = "Erreur";
 
@@ -50,11 +50,11 @@ public class OeuvreventeControleur {
         try {
             OeuvreventeEntity unOeuvrevente = new OeuvreventeEntity();
             unOeuvrevente.setTitreOeuvrevente(request.getParameter("titreOeuvrevente"));
-            unOeuvrevente.setEtatOeuvrevente("");
+            unOeuvrevente.setEtatOeuvrevente("L");
             unOeuvrevente.setPrixOeuvrevente(Double.parseDouble(request.getParameter("prixOeuvrevente")));
             OeuvreventeService oeuvreService = new OeuvreventeService();
             oeuvreService.insertOeuvrevente(unOeuvrevente);
-        } catch (MonException e) {
+        } catch (Exception e) {
             request.setAttribute("MesErreurs", e.getMessage());
             destinationPage = "Erreur";
         }
@@ -95,7 +95,7 @@ public class OeuvreventeControleur {
                 request.setAttribute("idProprietaire", oeuvreventeEntity.getIdProprietaire());
             }
 
-        } catch (MonException e) {
+        } catch (Exception e) {
             request.setAttribute("MesErreurs", e.getMessage());
             destinationPage = "Erreur";
         }
@@ -110,7 +110,7 @@ public class OeuvreventeControleur {
         OeuvreventeService oeuvreVenteService = new OeuvreventeService();
         OeuvreventeEntity oeuvrevente;
         try {
-            if (request.getParameter("idOeuvrevente") != null) {
+            if (request.getParameter("idOeuvrevente") != null && !request.getParameter("idOeuvrevente").equals("")) {
                 oeuvrevente = oeuvreVenteService.getOeuvreEntityById(Integer.parseInt(request.getParameter("idOeuvrevente")));
             } else {
                 oeuvrevente = new OeuvreventeEntity();
@@ -120,7 +120,7 @@ public class OeuvreventeControleur {
             oeuvrevente.setPrixOeuvrevente(Double.parseDouble(request.getParameter("prixOeuvrevente")));
             oeuvrevente.setIdProprietaire(Integer.parseInt(request.getParameter("idProprietaire")));
 
-            if (request.getParameter("idOeuvrevente") != null) {
+            if (request.getParameter("idOeuvrevente") != null  && !request.getParameter("idOeuvrevente").equals("")) {
                 oeuvrevente.setIdOeuvrevente(Integer.parseInt(request.getParameter("idOeuvrevente")));
                 oeuvreVenteService.updateOeuvreVente(oeuvrevente);
             } else {
@@ -128,7 +128,7 @@ public class OeuvreventeControleur {
             }
 
             destinationPage = "home";
-        } catch (MonException e) {
+        } catch (Exception e) {
             request.setAttribute("MesErreurs", e.getMessage());
             destinationPage = "Erreur";
         }
