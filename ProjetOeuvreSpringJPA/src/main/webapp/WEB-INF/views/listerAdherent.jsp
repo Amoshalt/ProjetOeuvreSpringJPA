@@ -1,13 +1,13 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+		 pageEncoding="UTF-8"%>
+<html>
 <%
 	session.setAttribute("title", "Liste des adhérents");
 %>
+
 <%@include file="./header.jsp" %>
 
-<body>
+<body style="margin-bottom: 20px;">
 
 	<div class="jumbotron text-center">
 		<h1>Listing des adhérents</h1>
@@ -38,4 +38,5 @@
 		</table>
 	</div>
 </body>
+<%@include file="./footer.jsp"%>
 </html>

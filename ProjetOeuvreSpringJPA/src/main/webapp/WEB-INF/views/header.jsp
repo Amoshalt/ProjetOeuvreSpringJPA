@@ -5,12 +5,15 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script language="JavaScript">
+    function fermer() {
+        window.close();
+    }
+</script>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -50,7 +53,8 @@
             </ul>
         </div>
     </nav>
-
+    <SCRIPT language="Javascript" type="text/javascript"></SCRIPT>
+    <script type="text/javascript" src="js/foncControle.js"></script>
 </head>
-<SCRIPT language="Javascript" type="text/javascript"></SCRIPT>
-<script type="text/javascript" src="js/foncControle.js"></script>
+
+</html>

@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<html>
 <%
     session.setAttribute("title", "Modifier oeuvres");
 %>
+
 <%@include file="./header.jsp" %>
-<SCRIPT language="Javascript" type="text/javascript"></SCRIPT>
-<script type="text/javascript" src="js/foncControle.js"></script>
 
 
-<body>
+<body style="margin-bottom: 20px;">
 <div class="jumbotron text-center">
     <c:choose>
         <c:when test="${ not empty idOeuvrevente}">
@@ -83,4 +83,5 @@
     </FORM>
 </DIV>
 </body>
+<%@include file="./footer.jsp"%>
 </html>

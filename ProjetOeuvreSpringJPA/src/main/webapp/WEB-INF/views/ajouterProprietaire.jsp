@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<html>
 <%
     session.setAttribute("title", "Ajouter propriétaire");
 %>
+
 <%@include file="./header.jsp" %>
-<SCRIPT language="Javascript" type="text/javascript"></SCRIPT>
-<script type="text/javascript" src="js/foncControle.js"></script>
 
-
-<body>
+<body style="margin-bottom: 20px;">
 <div class="jumbotron text-center">
     <h1>Ajout d'un propriétaire</h1>
 </div>
@@ -28,4 +27,5 @@
     </FORM>
 </DIV>
 </body>
+<%@include file="./footer.jsp"%>
 </html>

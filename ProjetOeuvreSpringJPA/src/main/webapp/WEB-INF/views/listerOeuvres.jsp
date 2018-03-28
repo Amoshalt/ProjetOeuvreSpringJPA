@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-
+<html>
 <%
     session.setAttribute("title", "Liste des oeuvres");
 %>
+
 <%@include file="./header.jsp" %>
-<html>
-<body>
+
+<body style="margin-bottom: 20px;">
 
 <div class="jumbotron text-center">
     <h1>Listing des oeuvres</h1>
@@ -27,7 +28,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${mesOeuvresventes}" var="item">
+        <c:forEach items="${oeuvresvente}" var="item">
             <c:set var="idOeuvre">${item.idOeuvrevente}</c:set>
             <c:set var="oeuvresReservees">${oeuvresReservees}</c:set>
             <tr>
@@ -64,4 +65,5 @@
     </table>
 </div>
 </body>
+<%@include file="./footer.jsp"%>
 </html>

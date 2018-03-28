@@ -72,4 +72,22 @@ public class OeuvreventeService extends Service{
             throw new MonException("Erreur de lecture durant mise à jour de l'oeuvre", e.getMessage());
         }
     }
+
+    public Object getBookedOeuvres() throws MonException {
+        List<Integer> bookedOeuvreventeEntityIds;
+        try
+        {
+            EntityTransaction transac = startTransaction();
+            transac.begin();
+            bookedOeuvreventeEntityIds = (List<Integer>) entitymanager.createQuery(
+                    "SELECT o.idOeuvrevente FROM OeuvreventeEntity o WHERE o.etatOeuvrevente=:etat"
+            )
+                    .setParameter("etat", "R")
+                    .getResultList();
+            entitymanager.close();
+        } catch (Exception e) {
+            throw new MonException("Erreur de lecture durant récupération de l'oeuvre", e.getMessage());
+        }
+        return bookedOeuvreventeEntityIds;
+    }
 }

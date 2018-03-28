@@ -25,13 +25,14 @@ public class OeuvreventeControleur {
         String destinationPage;
         try {
             // HttpSession session = request.getSession();
-            OeuvreventeService unService = new OeuvreventeService();
+            OeuvreventeService oeuvreService = new OeuvreventeService();
             ProprietaireService proprietaireService = new ProprietaireService();
-            List<OeuvreventeEntity> oeuvreventeEntityList = unService.consulterListeOeuvreventes();
+            List<OeuvreventeEntity> oeuvreventeEntityList = oeuvreService.consulterListeOeuvreventes();
             HashMap<Integer,ProprietaireEntity> proprietaireEntityList = proprietaireService.consulterListeProprietaires();
 
-            request.setAttribute("mesOeuvresventes", oeuvreventeEntityList);
+            request.setAttribute("oeuvresvente", oeuvreventeEntityList);
             request.setAttribute("proprietaires", proprietaireEntityList);
+            request.setAttribute("oeuvresReservees", oeuvreService.getBookedOeuvres());
             destinationPage = "listerOeuvres";
         } catch (MonException e) {
             request.setAttribute("MesErreurs", e.getMessage());
@@ -51,8 +52,8 @@ public class OeuvreventeControleur {
             unOeuvrevente.setTitreOeuvrevente(request.getParameter("titreOeuvrevente"));
             unOeuvrevente.setEtatOeuvrevente("");
             unOeuvrevente.setPrixOeuvrevente(Double.parseDouble(request.getParameter("prixOeuvrevente")));
-            OeuvreventeService unService = new OeuvreventeService();
-            unService.insertOeuvrevente(unOeuvrevente);
+            OeuvreventeService oeuvreService = new OeuvreventeService();
+            oeuvreService.insertOeuvrevente(unOeuvrevente);
         } catch (MonException e) {
             request.setAttribute("MesErreurs", e.getMessage());
             destinationPage = "Erreur";

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<html>
 <%
     session.setAttribute("title", "Réserver une oeuvre");
 %>
 <%@include file="./header.jsp" %>
-<html>
-<body>
+<body style="margin-bottom: 20px;">
 <div class="jumbotron text-center">
     <h1>Réserver une oeuvre</h1>
 </div>
@@ -54,4 +54,5 @@
     </form>
 </div>
 </body>
+<%@include file="./footer.jsp"%>
 </html>

@@ -1,18 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
+<html>
 <%
 	session.setAttribute("title", "Accueil");
 %>
+
 <%@include file="./header.jsp" %>
 
-
-<script language="JavaScript">
-    function fermer() {
-
-    }
-</script>
-
-<body>
+<body style="margin-bottom: 20px;">
 <div class="jumbotron text-center">
 	<h1>Bienvenue sur la médiathèque de Polytech</h1>
 </div>
@@ -38,4 +33,5 @@
 	</div>
 </div>
 </body>
+<%@include file="./footer.jsp"%>
 </html>
