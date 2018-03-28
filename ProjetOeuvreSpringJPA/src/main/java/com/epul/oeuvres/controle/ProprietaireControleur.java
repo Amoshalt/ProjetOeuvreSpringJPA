@@ -30,11 +30,12 @@ public class ProprietaireControleur {
             unProprietaire.setPrenomProprietaire(request.getParameter("prenomProprietaire"));
             ProprietaireService unService = new ProprietaireService();
             unService.insertProprietaire(unProprietaire);
+            destinationPage = "home";
         } catch (Exception e) {
             request.setAttribute("MesErreurs", e.getMessage());
             destinationPage = "Erreur";
         }
-        destinationPage = "home";
+
         return new ModelAndView(destinationPage);
     }
 

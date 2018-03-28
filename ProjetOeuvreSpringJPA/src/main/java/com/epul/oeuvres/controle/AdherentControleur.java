@@ -23,7 +23,7 @@ public class AdherentControleur {
             AdherentService unService = new AdherentService();
             request.setAttribute("mesAdherents", unService.consulterListeAdherents());
             destinationPage = "listerAdherent";
-        } catch (MonException e) {
+        } catch (Exception e) {
             request.setAttribute("MesErreurs", e.getMessage());
             destinationPage = "Erreur";
 
@@ -43,11 +43,12 @@ public class AdherentControleur {
             unAdherent.setVilleAdherent(request.getParameter("villeAdherent"));
             AdherentService unService = new AdherentService();
             unService.insertAdherent(unAdherent);
+            destinationPage = "home";
         } catch (Exception e) {
             request.setAttribute("MesErreurs", e.getMessage());
             destinationPage = "Erreur";
         }
-        destinationPage = "home";
+
         return new ModelAndView(destinationPage);
     }
 

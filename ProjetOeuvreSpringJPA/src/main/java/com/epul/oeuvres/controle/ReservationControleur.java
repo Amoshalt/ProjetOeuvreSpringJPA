@@ -38,7 +38,7 @@ public class ReservationControleur {
             request.setAttribute("oeuvre", oeuvreventeEntity);
 
             destinationPage = "reserverOeuvre";
-        } catch (MonException e) {
+        } catch (Exception e) {
             request.setAttribute("MesErreurs", e.getMessage());
             destinationPage = "Erreur";
         }
@@ -70,7 +70,7 @@ public class ReservationControleur {
             reservationService.insertReservation(reservationEntity);
             oeuvreVenteService.updateOeuvreVente(oeuvreventeEntity);
             destinationPage = "listerOeuvres";
-        } catch (ParseException | NullPointerException e) {
+        } catch (Exception e) {
             request.setAttribute("MesErreurs", e.getMessage());
             destinationPage = "Erreur";
         }
